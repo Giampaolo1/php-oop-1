@@ -11,16 +11,16 @@ class Configurazione {
   public $title;
   public $description;
 
-  function__construct($id, $title, $description){
+  function __construct($id, $title, $description){
     // valorizzazioni variabili tramite parametri
-    $ this -> id = $id;
-    $ this -> title = $title;
-    $ this -> description = $description;
+    $this -> id = $id;
+    $this -> title = $title;
+    $this -> description = $description;
 
   }
   function __toString(){
     // rappresentazione testuale dell oggetto
-    return"(" . $this -> id . ","
+    return "(" . $this -> id . ","
               . $this -> title . ","
               . $this -> description . ")";
   }
@@ -33,7 +33,7 @@ header ('Content-Type: application/json');
 $server = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "HotelDB";
+$dbname = "hoteldb";
 
 $conn = new mysqli($server, $username, $password, $dbname);
 if ($conn -> connect_errno) {
@@ -53,8 +53,7 @@ $confs = [];
 while ($conf = $res -> fetch_assoc()) {
   $confs[] = new Configurazione ($conf["id"],
   $conf["title"],
-  $conf["description"],
-  )
+  $conf["description"]);
 }
 
 foreach ($confs as $conf) {
